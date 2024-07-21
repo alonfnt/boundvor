@@ -38,8 +38,8 @@ def test_default_bounds():
 
 
 def test_furthest_site():
-    points = np.random.rand(10, 2)
-    bounding_box = np.array([[0.0, 0.0], [0.0, 1.0], [1.0, 1.0], [1.0, 0.0]])
+    points = np.array([[0.3, 0.3], [0.7, 0.7], [0.5, 0.5], [0.4, 0.2]])
+    bounding_box = [(0., 0.), (0., 1.), (1., 1.), (1., 0.)]
     voronoi = BoundedVoronoi(points, bounds=bounding_box, furthest_site=True)
 
     assert len(voronoi.regions) == len(points)
