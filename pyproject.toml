@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "boundvor"
+version = "0.1.0"
+description = "Bounded Voronoi diagram in Python"
+readme = "README.md"
+authors = [{ name="Albert Alonso", email="alonfnt@pm.me" },]
+license = { file = "LICENSE" }
+classifiers = [
+    "Intended Audience :: Developers",
+	"Intended Audience :: Science/Research",
+	"Topic :: Scientific/Engineering",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = ["numpy", "scipy"]
+
+[tool.setuptools]
+packages = ["boundvor"]
+
+[project.urls]
+"Homepage" = "https://github.com/alonfnt/boundvor"
+"Documentation" = "https://github.com/alonfnt/boundvor"
+"Source" = "https://github.com/alonfnt/boundvor"
+"Bug Tracker" = "https://github.com/alonfnt/boundvor/issues"
