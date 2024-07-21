@@ -4,6 +4,7 @@ import pytest
 from boundvor import BoundedVoronoi
 from boundvor.geometry import point_in_polygon
 
+np.random.seed(0)
 
 def test_basic_voronoi_within_bounds():
     points = np.random.rand(10, 2)
@@ -48,7 +49,7 @@ def test_furthest_site():
 
 
 def test_incremental():
-    points = np.random.rand(10, 2)
+    points = np.array([[0.3, 0.3], [0.7, 0.7], [0.5, 0.5], [0.5, 0.3], [0.5, 0.7]])
     bounding_box = np.array([[0.0, 0.0], [0.0, 1.0], [1.0, 1.0], [1.0, 0.0]])
     voronoi = BoundedVoronoi(points, bounds=bounding_box, incremental=True)
 
@@ -59,7 +60,7 @@ def test_incremental():
 
 
 def test_qhull_options():
-    points = np.random.rand(10, 2)
+    points = np.array([[0.3, 0.3], [0.7, 0.7], [0.5, 0.5], [0.5, 0.3], [0.5, 0.7]])
     bounding_box = np.array([[0.0, 0.0], [0.0, 1.0], [1.0, 1.0], [1.0, 0.0]])
     voronoi = BoundedVoronoi(points, bounds=bounding_box, qhull_options="Qbb Qc")
 
