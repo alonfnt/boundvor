@@ -17,7 +17,7 @@ def test_basic_voronoi_within_bounds():
 
 
 def test_voronoi_with_points_outside():
-    points = np.random.rand(10, 2)
+    points = np.array([[0.0, 3.0], [3.0, 0.0], [8.0, 8.0]])
     bounding_polygon = np.array(
         [[0.0, 0.0], [0.5, 0.2], [1.0, 0.0], [0.8, 0.5], [1.0, 1.0], [0.0, 1.0], [0.2, 0.5]]
     )
