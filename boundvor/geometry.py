@@ -1,6 +1,10 @@
 import numpy as np
 
-def point_in_polygon(point, polygon):
+def point_in_polygon(point, polygon, check_boundary=False):
+
+    if len(polygon) < 3:
+        raise ValueError("Polygon must have at least three points")
+
     x, y = point
     inside = False
     n = len(polygon)
@@ -15,6 +19,15 @@ def point_in_polygon(point, polygon):
                     if p1x == p2x or x <= xinters:
                         inside = not inside
         p1x, p1y = p2x, p2y
+
+    if check_boundary:
+        for i in range(n):
+            p1x, p1y = polygon[i]
+            p2x, p2y = polygon[(i + 1) % n]
+            if (min(p1x, p2x) <= x <= max(p1x, p2x)) and (min(p1y, p2y) <= y <= max(p1y, p2y)):
+                if (p2x - p1x) * (y - p1y) == (p2y - p1y) * (x - p1x):
+                    return True
+
     return inside
 
 def line_intersect(p1, p2, q1, q2):

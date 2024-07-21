@@ -8,12 +8,22 @@ from boundvor.geometry import point_in_polygon, polygon_intersection
 class BoundedVoronoi(ScipyVoronoi):
     def __init__(self, points, bounds=None, furthest_site=False, incremental=False, qhull_options=None):
         super().__init__(points, furthest_site=furthest_site, incremental=incremental, qhull_options=qhull_options)
+
         self.bounds = bounds if bounds is not None else self._default_bounds()
+        self.bounds = np.asarray(self.bounds)
+        print(self.bounds)
+
+        if len(self.bounds) < 3 or self.bounds.shape[1] != 2:
+            raise ValueError("Bounds must have at least three points")
+
+        if any(not point_in_polygon(point, self.bounds) for point in points):
+            raise ValueError("All points must be within the bounds")
+
         self._make_regions_finite()
 
     def _default_bounds(self):
-        min_x, min_y = self.min_bound
-        max_x, max_y = self.max_bound
+        min_x, min_y = self.min_bound - 0.1
+        max_x, max_y = self.max_bound + 0.1
         return [(min_x, min_y), (min_x, max_y), (max_x, max_y), (max_x, min_y)]
 
     def _make_regions_finite(self):
@@ -23,8 +33,6 @@ class BoundedVoronoi(ScipyVoronoi):
         bounded_regions = []
         new_vertices = self.vertices.tolist()
         new_vertices.extend(self.bounds)
-        new_ridge_vertices = []
-        new_ridge_points = []
         vertex_map = {tuple(vertex): i for i, vertex in enumerate(new_vertices)}
 
         center = self.points.mean(axis=0)
