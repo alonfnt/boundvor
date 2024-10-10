@@ -11,7 +11,6 @@ class BoundedVoronoi(ScipyVoronoi):
 
         self.bounds = bounds if bounds is not None else self._default_bounds()
         self.bounds = np.asarray(self.bounds)
-        print(self.bounds)
 
         if len(self.bounds) < 3 or self.bounds.shape[1] != 2:
             raise ValueError("Bounds must have at least three points")
