@@ -28,5 +28,17 @@ bounding_box = np.array([[0., 0.], [0., 1.], [1., 1.], [1., 0.]])
 voronoi = BoundedVoronoi(points, bounds=bounding_box)
 ```
 
+## Citation
+If you use `boundvor` in your research and want to reference it, please cite it as follows:
+```
+@software{alonso_boundvor,
+  author = {Alonso, Albert},
+  title = {boundvor: Voronoi Diagram Clipped on a Polygon},
+  url = {https://github.com/alonfnt/boundvor},
+  version = {0.1.1}
+}
+```
+
 ## License
 MIT License
+
