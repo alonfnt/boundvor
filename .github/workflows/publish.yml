@@ -24,6 +24,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install build Cython numpy
     - name: Build package
-      run: python -m build
+      run: python setup.py install
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
