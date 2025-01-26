@@ -35,7 +35,7 @@ If you use `boundvor` in your research and want to reference it, please cite it 
   author = {Alonso, Albert},
   title = {boundvor: Voronoi Diagram Clipped on a Polygon},
   url = {https://github.com/alonfnt/boundvor},
-  version = {0.1.1}
+  version = {0.1.2}
 }
 ```
 

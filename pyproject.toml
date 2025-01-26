@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools", "wheel", "cython", "numpy"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "boundvor"
-version = "0.1.1"
+version = "0.1.2"
 description = "Bounded Voronoi diagram in Python"
 readme = "README.md"
 authors = [{ name="Albert Alonso", email="alonfnt@pm.me" },]
@@ -20,6 +20,9 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
 ]
 dependencies = ["numpy", "scipy"]
+
+[project.optional-dependencies]
+dev = ["pytest", "cython"]
 
 [tool.setuptools]
 packages = ["boundvor"]
